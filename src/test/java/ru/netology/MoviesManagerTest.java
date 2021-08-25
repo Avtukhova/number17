@@ -94,6 +94,94 @@ public class MoviesManagerTest {
 
     }
 
+    @Test
+    public void shouldPosterLess10Movies() {
+        MoviesManager manager = new MoviesManager();
+
+        manager.addMovie(n1);
+        manager.addMovie(n2);
+        manager.addMovie(n3);
+        manager.addMovie(n4);
+        manager.addMovie(n5);
+        manager.addMovie(n6);
+
+        MovieInfo[] expected = new MovieInfo[]{n6, n5, n4, n3, n2, n1};
+        MovieInfo[] actual = manager.getAll();
+
+        assertArrayEquals(expected, actual);
+
+    }
+
+    @Test
+    public void shouldPosterMore10Movies() {
+        MoviesManager manager = new MoviesManager(10);
+
+        manager.addMovie(n1);
+        manager.addMovie(n2);
+        manager.addMovie(n3);
+        manager.addMovie(n4);
+        manager.addMovie(n5);
+        manager.addMovie(n6);
+        manager.addMovie(n7);
+        manager.addMovie(n8);
+        manager.addMovie(n9);
+        manager.addMovie(n10);
+        manager.addMovie(n11);
+
+
+
+        MovieInfo[] expected = new MovieInfo[]{n11, n10, n9, n8, n7, n6, n5, n4, n3, n2};
+        MovieInfo[] actual = manager.getLast10Movies();
+
+        assertArrayEquals(expected, actual);
+
+    }
+
+    @Test
+    public void shouldInPoster10Movies() {
+        MoviesManager manager = new MoviesManager(10);
+
+        manager.addMovie(n1);
+        manager.addMovie(n2);
+        manager.addMovie(n3);
+        manager.addMovie(n4);
+        manager.addMovie(n5);
+        manager.addMovie(n6);
+        manager.addMovie(n7);
+        manager.addMovie(n8);
+        manager.addMovie(n9);
+        manager.addMovie(n10);
+
+
+        MovieInfo[] expected = new MovieInfo[]{n10, n9, n8, n7, n6, n5, n4, n3, n2, n1};
+        MovieInfo[] actual = manager.getLast10Movies();
+
+        assertArrayEquals(expected, actual);
+
+    }
+
+    @Test
+    public void shouldInPosterLess10Movies() {
+        MoviesManager manager = new MoviesManager(10);
+
+        manager.addMovie(n1);
+        manager.addMovie(n2);
+        manager.addMovie(n3);
+        manager.addMovie(n4);
+        manager.addMovie(n5);
+        manager.addMovie(n6);
+        manager.addMovie(n7);
+        manager.addMovie(n8);
+
+
+
+        MovieInfo[] expected = new MovieInfo[]{n8, n7, n6, n5, n4, n3, n2, n1};
+        MovieInfo[] actual = manager.getLast10Movies();
+
+        assertArrayEquals(expected, actual);
+
+    }
+
 }
 
 
